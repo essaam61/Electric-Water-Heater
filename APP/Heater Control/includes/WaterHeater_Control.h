@@ -22,6 +22,7 @@
 
 
 #define TEMP_CHANNEL ADC_Channel0
+#define TEMP_CMP_NUM 5
 #define TEMP_SETPOINT_OFFSET 5
 #define TEMP_READCOUNT 10
 
@@ -41,7 +42,7 @@ typedef enum {
 void WaterHeater_Control_Init(void);
 void WaterHeater_Control(void);
 void Read_WaterTemperature(void);
-void Blink_SetPointTemperature_HeaterLED(void);
+void Blink_SetPointTemperature_and_HeaterLED(void);
 void Stop_WaterHeater_Operation(void);
 
 
