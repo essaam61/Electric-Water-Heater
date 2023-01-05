@@ -38,11 +38,10 @@ void WaterHeater_Control_Init(void)
 	Peltier_Init();
 	GINT_Enable_AllInterrupts();
 	Timer0_SetCallBack(Read_WaterTemperature);
-	Timer2_SetCallBack(Blink_SetPointTemperature_HeaterLED);
+	Timer2_SetCallBack(Blink_SetPointTemperature_and_HeaterLED);
 	Timer0_Init(NoClkSrc,0,TRUE);
 	Timer2_Init(NoClkSrc,0,TRUE);
 	
-	SSD_WriteNum(0,0);
 	
 	if(EEPROM_read(EEPROM_SP_Address) != 255)
 	{
@@ -61,7 +60,7 @@ void WaterHeater_Control(void)
 		{
 		
 
-			if( (Setpoint - TempReadings_Avg) == 5)
+			if( (Setpoint - TempReadings_Avg) == TEMP_CMP_NUM)
 			{
 				Heater_SetMode(HEATER_ON_MODE);
 				Peltier_SetMode(PELTIER_OFF_MODE);
@@ -75,7 +74,7 @@ void WaterHeater_Control(void)
 				}
 				else {}
 			}
-			else if( (TempReadings_Avg - Setpoint) == 5)
+			else if( (TempReadings_Avg - Setpoint) == TEMP_CMP_NUM)
 			{
 				Heater_SetMode(HEATER_OFF_MODE);
 				Peltier_SetMode(PELTIER_ON_MODE);
@@ -219,7 +218,7 @@ void Read_WaterTemperature(void)
 }
 
 
-void Blink_SetPointTemperature_HeaterLED(void)
+void Blink_SetPointTemperature_and_HeaterLED(void)
 {
 	
 	uint8 Setpoint_firstDigit=0, Setpoint_secondDigit=0;
