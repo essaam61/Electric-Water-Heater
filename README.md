@@ -8,3 +8,6 @@ After entering temperature setting mode, a single “Up” button press increase
 While the electric water heater is in the temperature setting mode, the 2 seven segment displays should blink every 1 second and show the set temperature. What's more, the water heater should exit the temperature setting mode if the “Up” and “Down” buttons are not pressed for 5 seconds.
 
 A LED is used to blink every 1 second as long as the heating element is ON, and should only be on if the cooling element is ON.
+
+
+![layout](https://user-images.githubusercontent.com/109050863/211896004-7d99e725-b7ab-483c-bb0a-5fa6934c8d75.PNG)
